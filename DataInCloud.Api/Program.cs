@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 using DataInCloud.Dal.Meal;
 using DataInCloud.Model.Meal;
 using DataInCloud.Orchestrators;
@@ -10,6 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IMealOrchestrator, MealOrchestrator>();
 builder.Services.AddScoped<IMealRepository, MealRepository>();

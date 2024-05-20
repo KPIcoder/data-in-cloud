@@ -1,4 +1,4 @@
-namespace DataInCloud.Orchestrators.Meal;
+namespace DataInCloud.Orchestrators.Meal.Contract;
 public class MealContract
 {
     public int Id { get; set; }

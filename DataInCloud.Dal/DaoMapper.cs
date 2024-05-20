@@ -6,6 +6,6 @@ public class DaoMapper : Profile
 {
     public DaoMapper()
     {
-        CreateMap<MealDao, Model.Meal.Meal>();
+        CreateMap<MealDao, Model.Meal.Meal>().ReverseMap();
     }
 }
