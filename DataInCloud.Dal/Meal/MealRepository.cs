@@ -29,11 +29,6 @@ public class MealRepository : IMealRepository
     {
         var entities = await _context.Meals.ToArrayAsync();
 
-        foreach (var entity in entities)
-        {
-            Console.WriteLine($"{entity.Name} {entity.IsAvailable}");
-        }
-
         var meals = _mapper.Map<List<Model.Meal.Meal>>(entities);
 
         return meals;

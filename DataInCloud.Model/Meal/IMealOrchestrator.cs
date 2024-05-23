@@ -7,6 +7,4 @@ public interface IMealOrchestrator
     Task<Meal> GetByIdAsync(int id);
     Task<Meal> UpdateByIdAsync(int id, Meal meal);
     Task<Meal> RemoveByIdAsync(int id);
-
-
 };
