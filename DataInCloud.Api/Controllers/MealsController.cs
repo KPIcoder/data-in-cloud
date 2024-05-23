@@ -25,11 +25,6 @@ public class MealsController : ControllerBase
     {
         var entities = await _mealOrchestrator.GetAllAsync();
 
-        foreach (var entity in entities)
-        {
-            Console.WriteLine($"{entity.Name} {entity.IsAvailable}");
-        }
-
         var meals = _mapper.Map<List<MealContract>>(entities);
 
         return Ok(meals);
