@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using DataInCloud.Dal.Meal;
 using DataInCloud.Model.Meal;
 using DataInCloud.Orchestrators;
+using DataInCloud.Model.Restaurant;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,11 +12,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddSingleton(sp => new MongoDbContext(
+    builder.Configuration.GetConnectionString("MongoDbConnection"),
+    builder.Configuration["MongoDbDatabaseName"]));
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddScoped<IMealOrchestrator, MealOrchestrator>();
+
 builder.Services.AddScoped<IMealRepository, MealRepository>();
+
+builder.Services.AddScoped<IRestaurantOrchestrator, RestaurantOrchestrator>();
+
+builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 
 var app = builder.Build();
 
