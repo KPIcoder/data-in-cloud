@@ -3,7 +3,6 @@ using AutoMapper;
 using DataInCloud.Model.Restaurant;
 using DataInCloud.Orchestrators.Restaurant.Contract;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
 
 namespace DataInCloud.Controllers;
 
