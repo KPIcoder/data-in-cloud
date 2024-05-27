@@ -1,8 +1,6 @@
-// Middleware/ErrorHandlingMiddleware.cs
 using System.Net;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using System.Text.Json;
+using DataInCloud.Api.Shared.ErrorBoundary;
 
 public class ErrorHandlingMiddleware
 {
@@ -45,8 +43,3 @@ public class ErrorHandlingMiddleware
     }
 }
 
-public class ErrorResponse
-{
-    public int StatusCode { get; set; }
-    public string Message { get; set; }
-}
