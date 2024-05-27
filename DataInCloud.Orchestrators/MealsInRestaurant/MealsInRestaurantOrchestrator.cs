@@ -21,7 +21,7 @@ public class MealsInRestaurantOrchestrator : IMealsInRestaurantOrchestrator
             return await _storage.ReadFileAsync<Meal>(fileName);
         }
 
-        throw new FileNotFoundException();
+        throw new FileNotFoundException($"File {fileName} does not exist");
     }
 
     public async Task<Meal> AddExistingMealToRestaurantAsync(string restaurantId, int mealId)
@@ -32,6 +32,4 @@ public class MealsInRestaurantOrchestrator : IMealsInRestaurantOrchestrator
 
         return entity;
     }
-
-
 }

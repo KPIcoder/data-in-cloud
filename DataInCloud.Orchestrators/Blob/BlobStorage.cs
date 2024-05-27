@@ -16,7 +16,7 @@ public class BlobStorage : IBlobStorage
     {
         var exists = await FileExistsAsync(fileName);
 
-        if (!exists) throw new FileNotFoundException();
+        if (!exists) throw new FileNotFoundException($"File {fileName} does not exist");
 
         var blobClient = _client.GetBlobClient(fileName);
 
@@ -53,7 +53,7 @@ public class BlobStorage : IBlobStorage
     {
         var exists = await FileExistsAsync(fileName);
 
-        if (!exists) throw new FileNotFoundException();
+        if (!exists) throw new FileNotFoundException($"File {fileName} does not exist");
 
         var downloaded = await _client.GetBlobClient(fileName).DownloadAsync();
 
