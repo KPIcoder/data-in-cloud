@@ -9,9 +9,11 @@ public class MealDao
     public int Id { get; set; }
 
     [Column("name")]
+    [MaxLength(256, ErrorMessage = "Must be within 1-256 chars")]
     public string Name { get; set; }
 
     [Column("price")]
+    [Range(1, 1000, ErrorMessage = "Must be within 1-1000")]
     public short Price { get; set; }
 
     [Column("is_available")]
