@@ -1,0 +1,6 @@
+@DataInCloud_HostAddress = http://localhost:5180
+
+GET {{DataInCloud_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
