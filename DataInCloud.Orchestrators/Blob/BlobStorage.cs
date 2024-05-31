@@ -12,7 +12,7 @@ public class BlobStorage : IBlobStorage
         _client = client;
     }
 
-    public async Task AppendToFile<T>(string fileName, T entity)
+    public async Task AppendToFileAsync<T>(string fileName, T entity)
     {
         var exists = await FileExistsAsync(fileName);
 
@@ -34,12 +34,11 @@ public class BlobStorage : IBlobStorage
         await blobClient.UploadAsync(stream, overwrite: true);
     }
 
-    public async Task CreateFile<T>(string fileName, T entity)
+    public async Task CreateFileAsync<T>(string fileName, T entity)
     {
         var blobClient = _client.GetBlobClient(fileName);
 
         string contentJson = JsonSerializer.Serialize(entity);
-
         using var stream = new MemoryStream(Encoding.UTF8.GetBytes(contentJson));
         await blobClient.UploadAsync(stream, overwrite: true);
     }

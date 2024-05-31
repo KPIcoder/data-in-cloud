@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataInCloud.Dal", "DataInCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{0EE14DC5-6F34-4EE4-8F72-89CB079C07D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataInCloud.Platform", "DataInCloud.Platform\DataInCloud.Platform.csproj", "{B0D57D4F-A994-4581-8FE0-9567C4404583}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0EE14DC5-6F34-4EE4-8F72-89CB079C07D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE14DC5-6F34-4EE4-8F72-89CB079C07D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE14DC5-6F34-4EE4-8F72-89CB079C07D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0D57D4F-A994-4581-8FE0-9567C4404583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D57D4F-A994-4581-8FE0-9567C4404583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D57D4F-A994-4581-8FE0-9567C4404583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D57D4F-A994-4581-8FE0-9567C4404583}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,7 @@ public interface IBlobStorage
 
     Task<T> ReadFileAsync<T>(string fileName);
 
-    Task AppendToFile<T>(string fileName, T entity);
+    Task AppendToFileAsync<T>(string fileName, T entity);
 
-    Task CreateFile<T>(string fileName, T entity);
+    Task CreateFileAsync<T>(string fileName, T entity);
 }

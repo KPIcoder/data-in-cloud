@@ -26,7 +26,7 @@ public class BlobStorageTests
         var entity = new Meal { Id = 1, Name = "Pizza", Price = 10, IsAvailable = true };
 
         // Act
-        await _blobStorage.CreateFile(fileName, entity);
+        await _blobStorage.CreateFileAsync(fileName, entity);
 
         // Assert
         _mockBlobClient.Verify(c => c.UploadAsync(It.IsAny<Stream>(), true, default), Times.Once);
@@ -57,7 +57,7 @@ public class BlobStorageTests
         _mockBlobClient.Setup(c => c.ExistsAsync(default)).ReturnsAsync(Azure.Response.FromValue(false, Mock.Of<Azure.Response>()));
 
         // Act & Assert
-        await Assert.ThrowsAsync<FileNotFoundException>(() => _blobStorage.AppendToFile(fileName, entity));
+        await Assert.ThrowsAsync<FileNotFoundException>(() => _blobStorage.AppendToFileAsync(fileName, entity));
     }
 
     [Fact]

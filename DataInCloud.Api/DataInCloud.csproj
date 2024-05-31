@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.20.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
@@ -18,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataInCloud.Orchestrators\DataInCloud.Orchestrators.csproj" />
     <ProjectReference Include="..\DataInCloud.Model\DataInCloud.Model.csproj" />
+    <ProjectReference Include="..\DataInCloud.Platform\DataInCloud.Platform.csproj" />
   </ItemGroup>
 
 </Project>

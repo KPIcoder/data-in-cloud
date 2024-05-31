@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataInCloud.Model\DataInCloud.Model.csproj" />
     <ProjectReference Include="..\DataInCloud.Dal\DataInCloud.Dal.csproj" />
+    <ProjectReference Include="..\DataInCloud.Platform\DataInCloud.Platform.csproj" />
   </ItemGroup>
 
   <ItemGroup>
