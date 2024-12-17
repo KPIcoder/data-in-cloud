@@ -7,8 +7,8 @@ RUN dotnet sln ic13-shchehlov-vla.sln remove Tests/Tests.csproj
 
 COPY DataInCloud.Api/DataInCloud.csproj DataInCloud.Api/
 COPY DataInCloud.Dal/DataInCloud.Dal.csproj DataInCloud.Dal/
-COPY DataInCloud.Model/DataInCloud.Model.csproj DataInCloud.Model/
 COPY DataInCloud.Orchestrators/DataInCloud.Orchestrators.csproj DataInCloud.Orchestrators/
+COPY DataInCloud.Model/DataInCloud.Model.csproj DataInCloud.Model/
 
 RUN dotnet restore
 
