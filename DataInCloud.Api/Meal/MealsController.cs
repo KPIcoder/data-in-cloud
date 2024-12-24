@@ -2,6 +2,9 @@ using AutoMapper;
 using DataInCloud.Model.Meal;
 using DataInCloud.Orchestrators.Meal.Contract;
 using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
+using System.Text;
+using System.Text.Json;
 
 
 namespace DataInCloud.Controllers;
@@ -13,10 +16,13 @@ public class MealsController : ControllerBase
     private readonly IMapper _mapper;
     private readonly IMealOrchestrator _mealOrchestrator;
 
-    public MealsController(IMapper mapper, IMealOrchestrator mealOrchestrator)
+    private readonly IModel _channel;
+
+    public MealsController(IMapper mapper, IMealOrchestrator mealOrchestrator, IModel channel)
     {
         _mapper = mapper;
         _mealOrchestrator = mealOrchestrator;
+        _channel = channel;
     }
 
 
@@ -45,6 +51,14 @@ public class MealsController : ControllerBase
         var entityToCreate = _mapper.Map<Meal>(meal);
 
         var createdEntity = await _mealOrchestrator.CreateAsync(entityToCreate);
+
+        var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(createdEntity));
+
+        _channel.BasicPublish(
+                exchange: "",
+                routingKey: "message_queue",
+                basicProperties: null,
+                body: bytes);
 
         return Ok(createdEntity);
     }

@@ -3,6 +3,7 @@ using DataInCloud.Dal.Meal;
 using DataInCloud.Model.Meal;
 using DataInCloud.Orchestrators;
 using DataInCloud.Model.Restaurant;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton(sp =>
+{
+    var factory = new ConnectionFactory()
+    {
+        HostName = builder.Configuration["RabbitMQ:Host"],
+        RequestedHeartbeat = TimeSpan.FromSeconds(60)
+    };
+    return factory.CreateConnection();
+});
+
+builder.Services.AddSingleton(sp =>
+{
+    var connection = sp.GetRequiredService<IConnection>();
+    var channel = connection.CreateModel();
+    channel.QueueDeclare("message_queue",
+        durable: true,
+        exclusive: false,
+        autoDelete: false,
+        arguments: null);
+    return channel;
+});
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
